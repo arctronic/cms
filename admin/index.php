@@ -1,8 +1,8 @@
 <?php include "include/header.php" ?>
 
 <div id="wrapper">
-
-    <?php include "include/nav.php"?>
+    <!-- <?php if ($pdo) echo "Working"; ?> -->
+    <?php include "include/nav.php" ?>
 
     <div id="page-wrapper">
 
@@ -13,9 +13,8 @@
                 <div class="col-lg-12">
                     <h1 class="page-header">
                         Welcome
-                        <small>Admin</small>
+                        <small>Author</small>
                     </h1>
-
                 </div>
             </div>
             <!-- /.row -->
