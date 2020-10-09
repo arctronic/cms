@@ -77,7 +77,7 @@
                 </li>
                 </li>
                 <li>
-                    <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Category</a>
+                    <a href="category.php"><i class="fa fa-fw fa-wrench"></i> Category</a>
                 </li>
                 <li>
                     <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Users <i class="fa fa-fw fa-caret-down"></i></a>
