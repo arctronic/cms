@@ -1,19 +1,31 @@
 <?php include "include/header.php" ?>
 <?php
-    if(isset($_GET["category_title"]) && isset($_GET["submit"]) && $_GET["category_title"]!=""){
-        require_once "../include/db.php";
-        $_SESSION['category_title'] = $_GET["category_title"];
+if (isset($_GET["category_title"]) && isset($_GET["submit"]) && $_GET["category_title"] != "") {
+    require_once "../include/db.php";
+    session_start();
+    $_SESSION['category_title'] = $_GET["category_title"];
 
-        $sql = "INSERT INTO category(category_title) VALUES(:category_title)";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute(array(
-            ':category_title' =>$_SESSION['category_title']
-        ));
-        unset($_SESSION['category_title']);
-        header('location: category.php');
-    }else{
-        $ping_back = "Blank Category couldn't be added!";
-    }
+    $sql = "INSERT INTO category(category_title) VALUES(:category_title)";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(array(
+        ':category_title' => $_SESSION['category_title']
+    ));
+    unset($_SESSION['category_title']);
+    header('location: category.php');
+} else {
+    $ping_back = "Blank Category couldn't be added!";
+}
+
+if(isset($_GET['del']) && $_GET['del']!=''){
+    $del_id = $_GET['del'];
+    $sql = "DELETE FROM category WHERE category_id = :category_id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(array(
+        ':category_id' => $del_id
+    ));
+    $_GET['del'] = '';
+}
+
 ?>
 <div id="wrapper">
     <!-- <?php if ($pdo) echo "Working"; ?> -->
@@ -47,6 +59,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Category Title</th>
+                                    <th>Delete Category</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -57,7 +70,9 @@
                                     $query = "SELECT * from category";
                                     $cat_data = $pdo->query($query);
                                     while ($row = $cat_data->fetch(PDO::FETCH_ASSOC)) {
-                                        echo "<td>" . $row['category_id'] . "</td><td>" . $row['category_title'] . "</td></tr>";
+                                        echo "<td>" . $row['category_id'] . "</td><td>" . $row['category_title'] . "</td>";
+                                        $cat_id = $row['category_id'];
+                                        echo "<td><a href='category.php?del={$cat_id}'>delete</a></td></tr>";
                                     }
                                     ?>
 
