@@ -1,5 +1,20 @@
 <?php include "include/header.php" ?>
+<?php
+    if(isset($_GET["category_title"]) && isset($_GET["submit"]) && $_GET["category_title"]!=""){
+        require_once "../include/db.php";
+        $_SESSION['category_title'] = $_GET["category_title"];
 
+        $sql = "INSERT INTO category(category_title) VALUES(:category_title)";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(array(
+            ':category_title' =>$_SESSION['category_title']
+        ));
+        unset($_SESSION['category_title']);
+        header('location: category.php');
+    }else{
+        $ping_back = "Blank Category couldn't be added!";
+    }
+?>
 <div id="wrapper">
     <!-- <?php if ($pdo) echo "Working"; ?> -->
     <?php include "include/nav.php" ?>
