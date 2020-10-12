@@ -11,10 +11,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        Welcome
-                        <small>Author</small>
-                    </h1>
-                    <table class="table table-bordered">
+                        Welcome<small>Author</small></h1>
+                    <table class="table table-hover table-bordered">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -34,19 +32,20 @@
                             $sql = "SELECT * from posts";
                             $data = $pdo->query($sql);
                             while ($row = $data->fetch(PDO::FETCH_ASSOC)) {
-                                echo "<td>" . $row['post_id'] . "</td>";
+                                $thumb = $row['post_thumbnail'];
+
+                                echo "<td>" . $row['post_id'] ."</td>";
                                 echo "<td>" . $row['post_author'] . "</td>";
                                 echo "<td>" . $row['post_title'] . "</td>";
                                 echo "<td>" . $row['post_category_id'] . "</td>";
                                 echo "<td>" . $row['post_status'] . "</td>";
-                                echo "<td>" . $row['post_thumbnail'] . "</td>";
+                                echo "<td><img width='100px' src='../images/$thumb' alt='image'></td>";
                                 echo "<td>" . $row['post_tag'] . "</td>";
                                 echo "<td>" . $row['post_comment_count'] . "</td>";
                                 echo "<td>" . $row['post_date'] . "</td>";
                                 echo "</tr>";
                             }
                             ?>
-                            echo "</tr>";
                         </tbody>
                     </table>
                 </div>
