@@ -13,15 +13,6 @@
                     <h1 class="page-header">
                         Welcome <br> <small>Author</small></h1>
                     <!-- <?php include "include/view_all_post.php"; ?> -->
-                    <!-- <br>
-                    <small>
-                        <?php
-                        if (isset($_POST['create_post'])) {
-                            echo "Post successfully added!";
-                            unset($_POST['create_post']);
-                        }
-                        ?>
-                    </small> -->
 
                     <?php
                     if (isset($_GET['source'])) {
