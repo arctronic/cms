@@ -29,7 +29,8 @@
             echo "<td>" . $row['post_tag'] . "</td>";
             echo "<td>" . $row['post_comment_count'] . "</td>";
             echo "<td>" . $row['post_date'] . "</td>";
-            echo "<td>" . "<a href='posts.php?delete={$id}'>Delete</a>" . "</td>";
+            echo "<td>" . "<a href='posts.php?source=edit_post&p_id={$id}'>Edit </a>" . "</td>";
+            echo "<td>" . "<a href='posts.php?delete={$id}'>Delete </a>" . "</td>";
             echo "</tr>";
         }
         ?>
